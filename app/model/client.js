@@ -7,7 +7,7 @@ class Client extends Model {
     toJSON () {
         const origin = {
             id: this.id,
-            khName: this.khName, // 客户名称
+            name: this.name, // 客户名称
             phone: this.phone, // 电话
             htje: this.htje, // 合同金额
             ysh: this.ysh, // 已送货
@@ -26,34 +26,34 @@ Client.init(
             primaryKey: true,
             autoIncrement: true
         },
-        khName: {
+        name: {
             type: Sequelize.STRING(50),
             allowNull: false
         },
         phone: {
             type: Sequelize.STRING(20),
-            allowNull: false,
+            allowNull: true,
         },
         htje: {
             type: Sequelize.STRING(1000),
-            allowNull: false,
+            allowNull: true,
             // defaultValue: '未设置'
         },
         ysh: {
             type: Sequelize.STRING(1000),
-            allowNull: false
+            allowNull: true
         },
         yshk: {
             type: Sequelize.STRING(1000),
-            allowNull: false
+            allowNull: true
         },
         wshk: {
             type: Sequelize.STRING(1000),
-            allowNull: false
+            allowNull: true
         },
         okhk: {
             type: Sequelize.STRING(1000),
-            allowNull: false
+            allowNull: true
         }
     },
     merge(
