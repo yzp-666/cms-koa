@@ -33,7 +33,18 @@ class ClientDao {
             });
         }
         const client = new Client();
+        /*
+        * 客户分类id (表) type
+        * 获取 addressList 填入 地址表并返回 ID数组 / 合并 ID 并用 ',' 隔开
+        */
         client.name = v.get('body.name');
+        client.typeId = v.get('body.typeId'); // 客户分类
+        client.phone = v.get('body.phone'); // 电话
+        client.byPhone = v.get('body.byPhone'); // 备用电话
+        client.htje = v.get('body.htje'); // 期初欠款
+        client.email = v.get('body.email'); // 邮箱
+        client.remark = v.get('body.remark'); // 备注
+        client.fax = v.get('body.fax'); // 传真
         await client.save();
     }
 

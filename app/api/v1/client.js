@@ -19,18 +19,6 @@ const clientApi = new LinRouter({
 // book 的dao 数据库访问层实例
 const clientDao = new ClientDao();
 
-// bookApi.get('/:id', async ctx => {
-//     const v = await new PositiveIdValidator().validate(ctx);
-//     const id = v.get('path.id');
-//     const book = await bookDto.getBook(id);
-//     if (!book) {
-//         throw new NotFound({
-//             code: 10022
-//         });
-//     }
-//     ctx.json(book);
-// });
-
 clientApi.linGet(
     'getClient',
     '/',
@@ -41,16 +29,7 @@ clientApi.linGet(
         console.log(clients);
         ctx.json(clients);
 });
-//
-// bookApi.get('/search/one', async ctx => {
-//     const v = await new BookSearchValidator().validate(ctx);
-//     const book = await bookDto.getBookByKeyword(v.get('query.q'));
-//     if (!book) {
-//         throw new BookNotFound();
-//     }
-//     ctx.json(book);
-// });
-//
+
 clientApi.post('/', async ctx => {
     const v = await new CreateOrUpdateClientValidator().validate(ctx);
     await clientDao.createClient(v);
@@ -58,16 +37,7 @@ clientApi.post('/', async ctx => {
         code: 12
     });
 });
-//
-// bookApi.put('/:id', async ctx => {
-//     const v = await new CreateOrUpdateBookValidator().validate(ctx);
-//     const id = getSafeParamId(ctx);
-//     await bookDto.updateBook(v, id);
-//     ctx.success({
-//         code: 13
-//     });
-// });
-//
+
 clientApi.linDelete(
     'deleteClient',
     '/delete/:id',

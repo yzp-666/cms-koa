@@ -8,7 +8,13 @@ class Client extends Model {
         const origin = {
             id: this.id,
             name: this.name, // 客户名称
+            typeId: this.typeId, // 客户属性
             phone: this.phone, // 电话
+            byPhone: this.byPhone,
+            email: this.email,
+            addressIDs: this.addressIDs,
+            remark: this.remark,
+            fax: this.fax,
             htje: this.htje, // 合同金额
             ysh: this.ysh, // 已送货
             yshk: this.yshk, // 预收货款
@@ -30,7 +36,31 @@ Client.init(
             type: Sequelize.STRING(50),
             allowNull: false
         },
+        typeId: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
         phone: {
+            type: Sequelize.STRING(20),
+            allowNull: true,
+        },
+        byPhone: {
+            type: Sequelize.STRING(20),
+            allowNull: true,
+        },
+        email: {
+            type: Sequelize.STRING(35),
+            allowNull: true,
+        },
+        addressIDs: {
+            type: Sequelize.STRING(1000),
+            allowNull: true,
+        },
+        remark: {
+            type: Sequelize.STRING(1000),
+            allowNull: true,
+        },
+        fax: {
             type: Sequelize.STRING(20),
             allowNull: true,
         },
