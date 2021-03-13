@@ -6,8 +6,8 @@ import sequelize from '../lib/db';
 class ClientType extends Model {
     toJSON () {
         const origin = {
-            id: this.id,
-            typeName: this.typeName
+            value: this.id,
+            label: this.name, // 客户名称
         };
         return origin;
     }
@@ -20,16 +20,16 @@ ClientType.init(
             primaryKey: true,
             autoIncrement: true
         },
-        typeName: {
+        name: {
             type: Sequelize.STRING(50),
-            allowNull: true
-        },
+            allowNull: false
+        }
     },
     merge(
         {
             sequelize,
-            tableName: 'clientType',
-            modelName: 'clientType'
+            tableName: 'client_type',
+            modelName: 'client_type'
         },
         InfoCrudMixin.options
     )

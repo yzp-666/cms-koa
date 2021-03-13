@@ -13,4 +13,11 @@ class CreateOrUpdateClientValidator extends LinValidator {
     }
 }
 
-export { CreateOrUpdateClientValidator };
+class OrUpdateClientTypeValidator extends LinValidator {
+    constructor () {
+        super();
+        this.name = new Rule('isNotEmpty', '必须传入属性名');
+    }
+}
+
+export { CreateOrUpdateClientValidator, OrUpdateClientTypeValidator };

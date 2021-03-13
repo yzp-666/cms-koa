@@ -1,9 +1,7 @@
 import { NotFound, Forbidden } from 'lin-mizar';
-import Sequelize from 'sequelize';
 import { ClientType } from '../model/clientType';
-import {Book} from "../model/book";
 
-class ClientDao {
+class ClientTypeDao {
 
     // 获取列表
     async getTypeList () {
@@ -13,18 +11,18 @@ class ClientDao {
 
     // 创建
     async createType (v) {
-        const ClientType = await ClientType.findOne({
+        const verify = await ClientType.findOne({
             where: {
-                typeName: v.get('body.typeName')
+                name: v.get('body.name')
             }
         });
-        if (ClientType) {
+        if (verify) {
             throw new Forbidden({
                 code: 10242
             });
         }
         const clientType = new ClientType();
-        clientType.typeName = v.get('body.typeName');
+        clientType.name = v.get('body.name');
         await clientType.save();
     }
 
@@ -44,4 +42,4 @@ class ClientDao {
     }
 }
 
-export { ClientDao };
+export { ClientTypeDao };

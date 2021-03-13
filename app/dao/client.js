@@ -1,7 +1,5 @@
 import { NotFound, Forbidden } from 'lin-mizar';
-import Sequelize from 'sequelize';
 import { Client } from '../model/client';
-import {Book} from "../model/book";
 
 class ClientDao {
     // 根据id 获取信息
