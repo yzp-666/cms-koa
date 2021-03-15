@@ -11,6 +11,8 @@ import { PositiveIdValidator } from '../../validator/common'; // 参数验证
 import { ClientDao } from '../../dao/client';
 import { ClientTypeDao } from '../../dao/clientType';
 import {log} from "../cms/log";
+import {CreateOrUpdateBookValidator} from "../../validator/book";
+import {getSafeParamId} from "../../lib/util";
 
 // client 的红图实例
 const clientApi = new LinRouter({
@@ -22,7 +24,7 @@ const clientApi = new LinRouter({
 const clientDao = new ClientDao();
 
 clientApi.linGet(
-    'getClient',
+    'getClients',
     '/',
     clientApi.permission('查询所有客户'),
     groupRequired,
@@ -32,6 +34,14 @@ clientApi.linGet(
         ctx.json(clients);
 });
 
+// 根据id查询单个客户
+clientApi.get('/:id', async ctx => {
+    const v = await new PositiveIdValidator().validate(ctx);
+    const id = v.get('path.id');
+    const res = await clientDao.getClient(id);
+    ctx.json(res);
+});
+
 clientApi.post('/', async ctx => {
     const v = await new CreateOrUpdateClientValidator().validate(ctx);
     await clientDao.createClient(v);
@@ -39,6 +49,22 @@ clientApi.post('/', async ctx => {
         code: 12
     });
 });
+
+clientApi.linPut(
+    'editClient',
+    '/:id',
+    clientApi.permission('编辑客户'),
+    groupRequired,
+    async ctx => {
+        const v = await new CreateOrUpdateClientValidator().validate(ctx);
+        const id = getSafeParamId(ctx);
+        console.log(id)
+        console.log(v)
+        await clientDao.updateClient(v, id);
+        ctx.success({
+            code: 13
+        });
+    });
 
 clientApi.linDelete(
     'deleteClient',
@@ -85,6 +111,7 @@ clientTypeApi.linDelete(
     clientTypeApi.permission('删除类客户型'),
     groupRequired,
     async ctx => {
+        // TODO 删除客户类型前先检测是否有客户使用该类型
         const v = await new PositiveIdValidator().validate(ctx);
         const id = v.get('path.id');
         console.log(id);
