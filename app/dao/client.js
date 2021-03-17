@@ -1,6 +1,5 @@
 import { NotFound, Forbidden } from 'lin-mizar';
 import { Client } from '../model/client';
-import {Book} from "../model/book";
 
 class ClientDao {
     // 根据id 获取信息
@@ -14,8 +13,13 @@ class ClientDao {
     }
 
     // 获取列表
-    async getClients () {
-        const clients = await Client.findAll();
+    async getClients (data) {
+        // TODO 添加验证参数
+        const clients = await Client.findAndCountAll({
+            limit: data.pageSize - 0,
+            offset: (data.currentPage - 1) * (data.pageSize)
+        });
+        // clients.total =
         return clients;
     }
 
@@ -41,6 +45,7 @@ class ClientDao {
         client.phone = v.get('body.phone'); // 电话
         client.byPhone = v.get('body.byPhone'); // 备用电话
         client.htje = v.get('body.htje'); // 期初欠款
+        client.address = v.get('body.address'); // 默认地址
         client.email = v.get('body.email'); // 邮箱
         client.remark = v.get('body.remark'); // 备注
         client.fax = v.get('body.fax'); // 传真

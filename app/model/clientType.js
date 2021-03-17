@@ -7,7 +7,7 @@ class ClientType extends Model {
     toJSON () {
         const origin = {
             value: this.id,
-            label: this.name, // 客户名称
+            label: this.name // 客户名称
         };
         return origin;
     }

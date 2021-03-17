@@ -7,6 +7,15 @@ class CreateOrUpdateClientValidator extends LinValidator {
     }
 }
 
+class ClientListValidator extends LinValidator {
+    constructor () {
+        super();
+        // this.name = new Rule('isNotEmpty', '必须传入客户名');
+        this.pageSize = new Rule('isNotEmpty', '必须传入size');
+        this.currentPage = new Rule('isNotEmpty', '必须传入Page');
+    }
+}
+
 class OrUpdateClientTypeValidator extends LinValidator {
     constructor () {
         super();
@@ -14,4 +23,4 @@ class OrUpdateClientTypeValidator extends LinValidator {
     }
 }
 
-export { CreateOrUpdateClientValidator, OrUpdateClientTypeValidator };
+export { CreateOrUpdateClientValidator, OrUpdateClientTypeValidator, ClientListValidator };
