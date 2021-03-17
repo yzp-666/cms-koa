@@ -1,21 +1,43 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql
+ Source Server         : 127.0.0.1
  Source Server Type    : MySQL
- Source Server Version : 80023
+ Source Server Version : 80022
  Source Host           : 127.0.0.1:3306
  Source Schema         : cms
 
  Target Server Type    : MySQL
- Target Server Version : 80023
+ Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 16/03/2021 01:26:46
+ Date: 17/03/2021 18:54:26
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for address
+-- ----------------------------
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE `address`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `province` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `city` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `district` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `street` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `default` int(0) NULL DEFAULT NULL,
+  `user_id` int(0) NULL DEFAULT NULL,
+  `create_time` datetime(0) NOT NULL,
+  `update_time` datetime(0) NOT NULL,
+  `delete_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_croatian_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of address
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for book
@@ -45,7 +67,7 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client`  (
   `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `typeId` int(0) NOT NULL,
+  `typeId` int(0) NULL DEFAULT NULL,
   `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `byPhone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `email` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
@@ -66,7 +88,22 @@ CREATE TABLE `client`  (
 -- ----------------------------
 -- Records of client
 -- ----------------------------
-INSERT INTO `client` VALUES (1, '测试客户', 2, '15797652251', NULL, NULL, NULL, NULL, NULL, '12333', NULL, NULL, NULL, NULL, '2021-03-14 01:53:20', '2021-03-16 01:21:14', NULL);
+INSERT INTO `client` VALUES (1, '测试客户', 2, '15797652251', NULL, NULL, NULL, NULL, NULL, '12333', NULL, NULL, NULL, NULL, '2021-03-14 01:53:20', '2021-03-17 12:01:37', '2021-03-17 12:01:37');
+INSERT INTO `client` VALUES (2, '测试1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:39:33', '2021-03-17 12:01:45', NULL);
+INSERT INTO `client` VALUES (3, '测试2', 2, NULL, NULL, NULL, NULL, NULL, NULL, '123', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:44:30', '2021-03-17 12:00:53', NULL);
+INSERT INTO `client` VALUES (4, '测试3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:44:40', '2021-03-17 12:00:51', NULL);
+INSERT INTO `client` VALUES (5, '测试4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:45:23', '2021-03-17 12:00:49', NULL);
+INSERT INTO `client` VALUES (6, '测试5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:48:27', '2021-03-17 11:48:38', '2021-03-17 11:48:38');
+INSERT INTO `client` VALUES (7, '测试6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:48:44', '2021-03-17 12:00:38', NULL);
+INSERT INTO `client` VALUES (8, '测试7', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:15', '2021-03-17 12:28:15', NULL);
+INSERT INTO `client` VALUES (9, '测试8', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:21', '2021-03-17 12:28:21', NULL);
+INSERT INTO `client` VALUES (10, '测试9', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:21', '2021-03-17 12:28:21', NULL);
+INSERT INTO `client` VALUES (11, '测试10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:21', '2021-03-17 12:28:21', NULL);
+INSERT INTO `client` VALUES (12, '测试11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:21', '2021-03-17 12:28:21', NULL);
+INSERT INTO `client` VALUES (13, '测试12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:39:33', '2021-03-17 12:01:45', NULL);
+INSERT INTO `client` VALUES (14, '测试13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:39:33', '2021-03-17 12:01:45', NULL);
+INSERT INTO `client` VALUES (15, '测试14', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:46:19', '2021-03-17 12:46:19', NULL);
+INSERT INTO `client` VALUES (16, '测试15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:46:50', '2021-03-17 12:46:50', NULL);
 
 -- ----------------------------
 -- Table structure for client_type
@@ -84,13 +121,37 @@ CREATE TABLE `client_type`  (
 -- ----------------------------
 -- Records of client_type
 -- ----------------------------
-INSERT INTO `client_type` VALUES (1, '测试类型', '2021-03-14 00:32:59', '2021-03-14 00:32:59', NULL);
-INSERT INTO `client_type` VALUES (2, '测试', '2021-03-14 00:33:27', '2021-03-14 00:33:27', NULL);
-INSERT INTO `client_type` VALUES (3, '测试2', '2021-03-14 00:35:40', '2021-03-14 00:35:40', NULL);
+INSERT INTO `client_type` VALUES (1, '测试类型', '2021-03-14 00:32:59', '2021-03-17 15:30:10', '2021-03-17 15:30:10');
+INSERT INTO `client_type` VALUES (2, '测试', '2021-03-14 00:33:27', '2021-03-17 15:30:13', '2021-03-17 15:30:13');
+INSERT INTO `client_type` VALUES (3, '测试2', '2021-03-14 00:35:40', '2021-03-17 15:25:17', '2021-03-17 15:25:17');
 INSERT INTO `client_type` VALUES (4, '测试3', '2021-03-14 00:36:55', '2021-03-14 01:14:28', '2021-03-14 01:14:28');
 INSERT INTO `client_type` VALUES (5, '测试4', '2021-03-14 00:37:05', '2021-03-14 01:14:21', '2021-03-14 01:14:21');
-INSERT INTO `client_type` VALUES (6, '测试3', '2021-03-14 01:16:28', '2021-03-14 01:16:28', NULL);
-INSERT INTO `client_type` VALUES (7, '测试4', '2021-03-14 01:16:38', '2021-03-14 01:16:38', NULL);
+INSERT INTO `client_type` VALUES (6, '测试3', '2021-03-14 01:16:28', '2021-03-17 15:25:16', '2021-03-17 15:25:16');
+INSERT INTO `client_type` VALUES (7, '测试4', '2021-03-14 01:16:38', '2021-03-17 15:30:15', '2021-03-17 15:30:15');
+INSERT INTO `client_type` VALUES (8, '测试类型1', '2021-03-17 15:17:54', '2021-03-17 15:17:54', NULL);
+INSERT INTO `client_type` VALUES (9, '测试类型2', '2021-03-17 15:25:05', '2021-03-17 15:25:05', NULL);
+INSERT INTO `client_type` VALUES (10, '测试类型3', '2021-03-17 15:25:11', '2021-03-17 15:25:11', NULL);
+INSERT INTO `client_type` VALUES (11, '随意添加', '2021-03-17 15:30:42', '2021-03-17 15:30:45', '2021-03-17 15:30:45');
+INSERT INTO `client_type` VALUES (12, '随意', '2021-03-17 15:32:03', '2021-03-17 15:32:08', '2021-03-17 15:32:08');
+INSERT INTO `client_type` VALUES (13, '测试类型123', '2021-03-17 15:32:16', '2021-03-17 15:32:21', '2021-03-17 15:32:21');
+INSERT INTO `client_type` VALUES (14, '测试类型2333', '2021-03-17 15:34:35', '2021-03-17 15:57:43', '2021-03-17 15:57:43');
+INSERT INTO `client_type` VALUES (15, '添加测试1', '2021-03-17 15:42:33', '2021-03-17 15:57:06', '2021-03-17 15:57:06');
+INSERT INTO `client_type` VALUES (16, '123', '2021-03-17 15:58:07', '2021-03-17 15:58:10', '2021-03-17 15:58:10');
+INSERT INTO `client_type` VALUES (17, '2333', '2021-03-17 15:58:20', '2021-03-17 15:58:25', '2021-03-17 15:58:25');
+INSERT INTO `client_type` VALUES (18, '测试233', '2021-03-17 15:59:39', '2021-03-17 16:34:29', '2021-03-17 16:34:29');
+INSERT INTO `client_type` VALUES (19, '测试123', '2021-03-17 16:00:37', '2021-03-17 16:34:28', '2021-03-17 16:34:28');
+INSERT INTO `client_type` VALUES (20, '添加测试', '2021-03-17 16:06:43', '2021-03-17 16:34:26', '2021-03-17 16:34:26');
+INSERT INTO `client_type` VALUES (21, '测试添加', '2021-03-17 16:07:26', '2021-03-17 16:34:23', '2021-03-17 16:34:23');
+INSERT INTO `client_type` VALUES (22, '测试1', '2021-03-17 16:07:32', '2021-03-17 16:34:21', '2021-03-17 16:34:21');
+INSERT INTO `client_type` VALUES (23, '成功测试', '2021-03-17 16:16:03', '2021-03-17 16:34:19', '2021-03-17 16:34:19');
+INSERT INTO `client_type` VALUES (24, '测试成功', '2021-03-17 16:16:39', '2021-03-17 16:34:17', '2021-03-17 16:34:17');
+INSERT INTO `client_type` VALUES (25, '测试2', '2021-03-17 16:16:51', '2021-03-17 16:34:15', '2021-03-17 16:34:15');
+INSERT INTO `client_type` VALUES (26, '测试3', '2021-03-17 16:32:42', '2021-03-17 16:32:51', '2021-03-17 16:32:51');
+INSERT INTO `client_type` VALUES (27, '测试4', '2021-03-17 16:34:33', '2021-03-17 16:44:17', '2021-03-17 16:44:17');
+INSERT INTO `client_type` VALUES (28, '测试5', '2021-03-17 16:39:06', '2021-03-17 16:44:16', '2021-03-17 16:44:16');
+INSERT INTO `client_type` VALUES (29, '测试6', '2021-03-17 16:42:22', '2021-03-17 16:44:14', '2021-03-17 16:44:14');
+INSERT INTO `client_type` VALUES (30, '测试7', '2021-03-17 16:44:09', '2021-03-17 16:44:12', '2021-03-17 16:44:12');
+INSERT INTO `client_type` VALUES (31, '测试类型4', '2021-03-17 16:44:27', '2021-03-17 16:44:27', NULL);
 
 -- ----------------------------
 -- Table structure for lin_file
