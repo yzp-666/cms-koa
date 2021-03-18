@@ -7,11 +7,11 @@ class Address extends Model {
   toJSON () {
     const origin = {
       id: this.id,
-      province: this.province, // 省
-      city: this.city,  // 市
-      district: this.district, // 区
-      street: this.street, // 街道
-      default: this.default
+      firm_name: this.firm_name, // 公司名称
+      address: this.address, // 地址
+      linkman: this.linkman, // 联系人
+      link_phone: this.link_phone, // 联系人电话
+      remark: this.remark // 备注
     };
     return origin;
   }
@@ -24,23 +24,23 @@ Address.init(
       primaryKey: true,
       autoIncrement: true
     },
-    province: {
+    firm_name: {
       type: Sequelize.STRING(10),
       allowNull: true
     },
-    city: {
-      type: Sequelize.STRING(10),
-      allowNull: true,
-    },
-    district: {
-      type: Sequelize.STRING(10),
-      allowNull: true
-    },
-    street: {
+    address: {
       type: Sequelize.STRING(100),
       allowNull: true
     },
-    default: {
+    linkman: {
+      type: Sequelize.STRING(10),
+      allowNull: true
+    },
+    link_phone: {
+      type: Sequelize.STRING(20),
+      allowNull: true
+    },
+    remark: {
       type: Sequelize.INTEGER,
       allowNull: true
     },

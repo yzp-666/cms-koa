@@ -12,6 +12,7 @@ class Client extends Model {
       phone: this.phone, // 电话
       byPhone: this.byPhone,
       email: this.email,
+      address: this.address,
       addressIDs: this.addressIDs,
       remark: this.remark,
       fax: this.fax,
