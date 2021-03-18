@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 17/03/2021 18:54:26
+ Date: 18/03/2021 19:11:23
 */
 
 SET NAMES utf8mb4;
@@ -23,17 +23,17 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address`  (
   `id` int(0) NOT NULL AUTO_INCREMENT,
-  `province` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
-  `city` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
-  `district` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
-  `street` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
-  `default` int(0) NULL DEFAULT NULL,
+  `firm_name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `linkman` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `link_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `remark` int(0) NULL DEFAULT NULL,
   `user_id` int(0) NULL DEFAULT NULL,
   `create_time` datetime(0) NOT NULL,
   `update_time` datetime(0) NOT NULL,
   `delete_time` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_croatian_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_croatian_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of address
@@ -66,44 +66,30 @@ INSERT INTO `book` VALUES (1, '1234', '123', '3', '3', '2021-03-15 23:57:45.000'
 DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client`  (
   `id` int(0) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NOT NULL,
   `typeId` int(0) NULL DEFAULT NULL,
-  `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `byPhone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `email` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `addressIDs` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `remark` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `fax` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `htje` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `ysh` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `yshk` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `wshk` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `okhk` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `byPhone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `email` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `address` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `addressIDs` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `remark` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `fax` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `htje` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT NULL,
+  `ysh` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT '0.00',
+  `yshk` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT '0.00',
+  `wshk` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT '0.00',
+  `okhk` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_croatian_ci NULL DEFAULT '0.00',
   `create_time` datetime(0) NOT NULL,
   `update_time` datetime(0) NOT NULL,
   `delete_time` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_croatian_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of client
 -- ----------------------------
-INSERT INTO `client` VALUES (1, '测试客户', 2, '15797652251', NULL, NULL, NULL, NULL, NULL, '12333', NULL, NULL, NULL, NULL, '2021-03-14 01:53:20', '2021-03-17 12:01:37', '2021-03-17 12:01:37');
-INSERT INTO `client` VALUES (2, '测试1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:39:33', '2021-03-17 12:01:45', NULL);
-INSERT INTO `client` VALUES (3, '测试2', 2, NULL, NULL, NULL, NULL, NULL, NULL, '123', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:44:30', '2021-03-17 12:00:53', NULL);
-INSERT INTO `client` VALUES (4, '测试3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:44:40', '2021-03-17 12:00:51', NULL);
-INSERT INTO `client` VALUES (5, '测试4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:45:23', '2021-03-17 12:00:49', NULL);
-INSERT INTO `client` VALUES (6, '测试5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:48:27', '2021-03-17 11:48:38', '2021-03-17 11:48:38');
-INSERT INTO `client` VALUES (7, '测试6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:48:44', '2021-03-17 12:00:38', NULL);
-INSERT INTO `client` VALUES (8, '测试7', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:15', '2021-03-17 12:28:15', NULL);
-INSERT INTO `client` VALUES (9, '测试8', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:21', '2021-03-17 12:28:21', NULL);
-INSERT INTO `client` VALUES (10, '测试9', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:21', '2021-03-17 12:28:21', NULL);
-INSERT INTO `client` VALUES (11, '测试10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:21', '2021-03-17 12:28:21', NULL);
-INSERT INTO `client` VALUES (12, '测试11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:28:21', '2021-03-17 12:28:21', NULL);
-INSERT INTO `client` VALUES (13, '测试12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:39:33', '2021-03-17 12:01:45', NULL);
-INSERT INTO `client` VALUES (14, '测试13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 11:39:33', '2021-03-17 12:01:45', NULL);
-INSERT INTO `client` VALUES (15, '测试14', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:46:19', '2021-03-17 12:46:19', NULL);
-INSERT INTO `client` VALUES (16, '测试15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00', '0.00', '0.00', '0.00', '0.00', '2021-03-17 12:46:50', '2021-03-17 12:46:50', NULL);
+INSERT INTO `client` VALUES (1, '测试客户', 8, '1579652251', '18826127550', '819836692@qq.com', NULL, NULL, '测试备注', '521-1314', '120', '0.00', '0.00', '0.00', '0.00', '2021-03-18 14:28:14', '2021-03-18 14:29:59', NULL);
 
 -- ----------------------------
 -- Table structure for client_type
@@ -116,7 +102,7 @@ CREATE TABLE `client_type`  (
   `update_time` datetime(0) NOT NULL,
   `delete_time` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of client_type
@@ -190,13 +176,14 @@ CREATE TABLE `lin_group`  (
   `delete_time` datetime(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `name_del`(`name`, `delete_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lin_group
 -- ----------------------------
 INSERT INTO `lin_group` VALUES (1, 'root', '超级用户组', 1, '2021-03-13 00:04:02.804', '2021-03-13 00:04:02.804', NULL);
 INSERT INTO `lin_group` VALUES (2, 'guest', '游客组', 2, '2021-03-13 00:04:02.805', '2021-03-13 00:04:02.805', NULL);
+INSERT INTO `lin_group` VALUES (3, 'admin', '管理员', 3, '2021-03-18 16:04:12.000', '2021-03-18 16:04:12.000', NULL);
 
 -- ----------------------------
 -- Table structure for lin_group_permission
@@ -208,11 +195,21 @@ CREATE TABLE `lin_group_permission`  (
   `permission_id` int(0) UNSIGNED NOT NULL COMMENT '权限id',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `group_id_permission_id`(`group_id`, `permission_id`) USING BTREE COMMENT '联合索引'
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lin_group_permission
 -- ----------------------------
+INSERT INTO `lin_group_permission` VALUES (1, 3, 1);
+INSERT INTO `lin_group_permission` VALUES (2, 3, 2);
+INSERT INTO `lin_group_permission` VALUES (3, 3, 3);
+INSERT INTO `lin_group_permission` VALUES (4, 3, 4);
+INSERT INTO `lin_group_permission` VALUES (5, 3, 5);
+INSERT INTO `lin_group_permission` VALUES (6, 3, 6);
+INSERT INTO `lin_group_permission` VALUES (7, 3, 7);
+INSERT INTO `lin_group_permission` VALUES (8, 3, 8);
+INSERT INTO `lin_group_permission` VALUES (10, 3, 9);
+INSERT INTO `lin_group_permission` VALUES (9, 3, 10);
 
 -- ----------------------------
 -- Table structure for lin_log
@@ -231,11 +228,12 @@ CREATE TABLE `lin_log`  (
   `update_time` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
   `delete_time` datetime(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lin_log
 -- ----------------------------
+INSERT INTO `lin_log` VALUES (1, '管理员新建了一个用户', 1, 'root', 201, 'POST', '/cms/user/register', '', '2021-03-18 16:04:52.000', '2021-03-18 16:04:52.000', NULL);
 
 -- ----------------------------
 -- Table structure for lin_permission
@@ -282,12 +280,13 @@ CREATE TABLE `lin_user`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `username_del`(`username`, `delete_time`) USING BTREE,
   UNIQUE INDEX `email_del`(`email`, `delete_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lin_user
 -- ----------------------------
 INSERT INTO `lin_user` VALUES (1, 'root', 'root', NULL, NULL, '2021-03-13 00:04:02.802', '2021-03-13 00:04:02.802', NULL);
+INSERT INTO `lin_user` VALUES (2, 'admin', NULL, NULL, NULL, '2021-03-18 16:04:52.000', '2021-03-18 16:04:52.000', NULL);
 
 -- ----------------------------
 -- Table structure for lin_user_group
@@ -299,12 +298,13 @@ CREATE TABLE `lin_user_group`  (
   `group_id` int(0) UNSIGNED NOT NULL COMMENT '分组id',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id_group_id`(`user_id`, `group_id`) USING BTREE COMMENT '联合索引'
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lin_user_group
 -- ----------------------------
 INSERT INTO `lin_user_group` VALUES (1, 1, 1);
+INSERT INTO `lin_user_group` VALUES (2, 2, 3);
 
 -- ----------------------------
 -- Table structure for lin_user_identity
@@ -320,11 +320,12 @@ CREATE TABLE `lin_user_identity`  (
   `update_time` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
   `delete_time` datetime(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lin_user_identity
 -- ----------------------------
 INSERT INTO `lin_user_identity` VALUES (1, 1, 'USERNAME_PASSWORD', 'root', 'sha1$c419e500$1$84869e5560ebf3de26b6690386484929456d6c07', '2021-03-13 00:04:02.803', '2021-03-13 00:04:02.803', NULL);
+INSERT INTO `lin_user_identity` VALUES (2, 2, 'USERNAME_PASSWORD', 'admin', 'sha1$a7880269$1$b300e2122d1d4317056c83a8653324152cdaf978', '2021-03-18 16:04:52.000', '2021-03-18 16:04:52.000', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
