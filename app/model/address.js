@@ -25,15 +25,15 @@ Address.init(
       autoIncrement: true
     },
     firm_name: {
-      type: Sequelize.STRING(10),
+      type: Sequelize.STRING(200),
       allowNull: true
     },
     address: {
-      type: Sequelize.STRING(100),
+      type: Sequelize.STRING(200),
       allowNull: true
     },
     linkman: {
-      type: Sequelize.STRING(10),
+      type: Sequelize.STRING(100),
       allowNull: true
     },
     link_phone: {
@@ -41,7 +41,7 @@ Address.init(
       allowNull: true
     },
     remark: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING(1000),
       allowNull: true
     },
     user_id: {
