@@ -1,10 +1,10 @@
-import { InfoCrudMixin } from 'lin-mizar';
-import { merge } from 'lodash';
-import { Sequelize, Model } from 'sequelize';
+import {InfoCrudMixin} from 'lin-mizar';
+import {merge} from 'lodash';
+import {Sequelize, Model} from 'sequelize';
 import sequelize from '../lib/db';
 
 class Client extends Model {
-  toJSON () {
+  toJSON() {
     const origin = {
       id: this.id,
       name: this.name, // 客户名称
@@ -104,4 +104,4 @@ Client.init(
   )
 );
 
-export { Client };
+export {Client};

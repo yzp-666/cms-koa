@@ -1,18 +1,18 @@
-import { LinRouter, disableLoading } from 'lin-mizar';
-import { groupRequired } from '../../middleware/jwt'; // 权限判断
+import {LinRouter, disableLoading} from 'lin-mizar';
+import {groupRequired} from '../../middleware/jwt'; // 权限判断
 import {
   CreateOrUpdateClientValidator, // 客户创建参数验证
   ClientListValidator, // 列表查询参数验证
   OrUpdateClientTypeValidator // 客户类型参数验证
 } from '../../validator/client'; // 自定义验证
-import { PositiveIdValidator } from '../../validator/common'; // 参数验证
+import {PositiveIdValidator} from '../../validator/common'; // 参数验证
 //
 // import { getSafeParamId } from '../../lib/util'; // 验证id
 // import { BookNotFound } from '../../lib/exception'; // 异常
-import { ClientDao } from '../../dao/client';
-import { ClientTypeDao } from '../../dao/clientType';
+import {ClientDao} from '../../dao/client';
+import {ClientTypeDao} from '../../dao/clientType';
 // import { log } from "../cms/log";
-import { getSafeParamId } from "../../lib/util";
+import {getSafeParamId} from "../../lib/util";
 
 // client 的红图实例
 const clientApi = new LinRouter({
@@ -123,4 +123,4 @@ clientTypeApi.linDelete(
   }
 );
 
-module.exports = { clientApi, clientTypeApi, [disableLoading]: false };
+module.exports = {clientApi, clientTypeApi, [disableLoading]: false};
