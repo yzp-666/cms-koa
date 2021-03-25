@@ -11,7 +11,6 @@ import { PositiveIdValidator } from '../../validator/common'; // 参数验证
 // import { BookNotFound } from '../../lib/exception'; // 异常
 import { ClientDao } from '../../dao/client';
 import { ClientTypeDao } from '../../dao/clientType';
-// import { log } from "../cms/log";
 import { getSafeParamId } from "../../lib/util";
 
 // client 的红图实例

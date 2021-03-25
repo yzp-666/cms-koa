@@ -13,7 +13,6 @@ class Client extends Model {
       byPhone: this.byPhone,
       email: this.email,
       address: this.address,
-      addressIDs: this.addressIDs,
       remark: this.remark,
       fax: this.fax,
       htje: this.htje, // 合同金额
@@ -54,10 +53,6 @@ Client.init(
       allowNull: true
     },
     address: {
-      type: Sequelize.STRING(1000),
-      allowNull: true
-    },
-    addressIDs: {
       type: Sequelize.STRING(1000),
       allowNull: true
     },
