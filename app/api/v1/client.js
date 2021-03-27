@@ -11,7 +11,7 @@ import { PositiveIdValidator } from '../../validator/common'; // 参数验证
 // import { BookNotFound } from '../../lib/exception'; // 异常
 import { ClientDao } from '../../dao/client';
 import { ClientTypeDao } from '../../dao/clientType';
-import { getSafeParamId } from "../../lib/util";
+import { getSafeParamId, success } from "../../lib/util";
 
 // client 的红图实例
 const clientApi = new LinRouter({
@@ -31,7 +31,7 @@ clientApi.linGet(
     // 校验查询的参数
     const v = await new ClientListValidator().validate(ctx);
     const clients = await clientDao.getClients(v.get('query'));
-    ctx.json(clients);
+    success(ctx, clients)
   });
 
 // 根据id查询单个客户

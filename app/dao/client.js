@@ -17,11 +17,11 @@ class ClientDao {
   // 获取列表
   async getClients (data) {
     // TODO 添加验证参数
+    // data 查询条件
     const clients = await Client.findAndCountAll({
       limit: data.pageSize - 0,
       offset: (data.currentPage - 1) * (data.pageSize)
     });
-    // clients.total =
     return clients;
   }
 
