@@ -24,7 +24,6 @@ class ClientTypeDao {
     const clientType = new ClientType();
     clientType.name = v.get('body.name');
     await clientType.save();
-    console.log(clientType.dataValues);
     let newType = clientType.dataValues
     delete newType.update_time
     delete newType.create_time
