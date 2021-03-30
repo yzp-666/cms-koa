@@ -10,9 +10,9 @@ class Product extends Model {
       // images: this.images,
       code: this.code,
       name: this.name,
-      unit: this.unit,
-      width: this.width,
-      weight: this.weight,
+      unit: this.unit, // 1: kg  , 2：m
+      price: this.price,
+      types: this.types,
       remark: this.remark
     };
     return origin;
@@ -26,6 +26,10 @@ Product.init(
       primaryKey: true,
       autoIncrement: true
     },
+    // images: {
+    //   type: Sequelize.STRING(1000),
+    //   allowNull: true
+    // },
     code: {
       type: Sequelize.STRING(10),
       allowNull: false
@@ -35,14 +39,15 @@ Product.init(
       allowNull: false
     },
     unit: {
-      type: Sequelize.STRING(10),
+      type: Sequelize.INTEGER,
       allowNull: true,
+      defaultValue: 1
     },
-    width: {
-      type: Sequelize.STRING(50),
+    types: {
+      type: Sequelize.STRING(200),
       allowNull: true
     },
-    weight: {
+    price: {
       type: Sequelize.STRING(50),
       allowNull: true
     },

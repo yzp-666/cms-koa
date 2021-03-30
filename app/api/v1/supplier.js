@@ -16,7 +16,7 @@ import { getSafeParamId } from "../../lib/util";
 // Supplier 的红图实例
 const supplierApi = new LinRouter({
   prefix: '/v1/supplier',
-  module: '客户'
+  module: '供应商'
 });
 
 // dao 数据库访问层实例

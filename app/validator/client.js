@@ -1,14 +1,14 @@
-import {LinValidator, Rule} from 'lin-mizar';
+import { LinValidator, Rule } from 'lin-mizar';
 
 class CreateOrUpdateClientValidator extends LinValidator {
-  constructor() {
+  constructor () {
     super();
     this.name = new Rule('isNotEmpty', '必须传入客户名');
   }
 }
 
 class ClientListValidator extends LinValidator {
-  constructor() {
+  constructor () {
     super();
     // this.name = new Rule('isNotEmpty', '必须传入客户名');
     this.pageSize = new Rule('isNotEmpty', '必须传入size');
