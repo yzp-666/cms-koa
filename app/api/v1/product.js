@@ -43,7 +43,7 @@ productApi.linGet(
     success(ctx, clients)
   });
 
-// 根据id查询单个客户
+// 根据id查询单个商品
 productApi.get('/:id', async ctx => {
   const v = await new PositiveIdValidator().validate(ctx);
   const id = v.get('path.id');
