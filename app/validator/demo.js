@@ -3,7 +3,7 @@ import { LinValidator, Rule } from 'lin-mizar';
 class SearchValidator extends LinValidator {
   constructor () {
     super();
-    this.q = new Rule('isNotEmpty', '必须传入搜索关键字');
+    this.pageSize = new Rule('isNotEmpty', '必须传入size');
   }
 }
 

@@ -2,8 +2,8 @@
 import { disableLoading, LinRouter, NotFound } from 'lin-mizar';
 import { DemoDao } from '../../dao/demo';
 import { PositiveIdValidator } from '../../validator/common'; // id验证
-import { CreateOrUpdataValidator } from '../../validator/demo';
-import { getSafeParamId } from '../../lib/util';
+import { SearchValidator, CreateOrUpdataValidator } from '../../validator/demo';
+import { getSafeParamId, success } from '../../lib/util';
 import { groupRequired } from '../../middleware/jwt';
 
 const demoApi = new LinRouter({
@@ -28,7 +28,7 @@ demoApi.get('/:id', async ctx => {
       code: 10022
     });
   }
-  ctx.json(demo);
+  success(ctx, demo)
 });
 
 /*
@@ -36,10 +36,17 @@ demoApi.get('/:id', async ctx => {
  *@param{ currentPage, pageSize }
  *@return {list} demoList
 */
-demoApi.get('/', async ctx => {
-  const demos = await demoDto.getList();
-  ctx.json(demos);
-});
+demoApi.linGet(
+  'getList',
+  '/',
+  demoApi.permission('查询所列表'),
+  groupRequired,
+  async ctx => {
+    // 校验查询的参数
+    const v = await new SearchValidator().validate(ctx);
+    const list = await demoDto.getList(v.get('query'));
+    success(ctx, list)
+  });
 
 /*
  *@method Create

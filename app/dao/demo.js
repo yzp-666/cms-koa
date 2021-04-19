@@ -26,8 +26,11 @@ class DemoDao {
   }
 
   // 获取列表
-  async getList () {
-    const demos = await Demo.findAll();
+  async getList (data) {
+    const demos = await Demo.findAndCountAll({
+      limit: data.pageSize - 0,
+      offset: (data.currentPage - 1) * (data.pageSize)
+    });
     return demos;
   }
 
@@ -35,7 +38,7 @@ class DemoDao {
   async create (v) {
     const demo = await Demo.findOne({
       where: {
-        title: v.get('body.name')
+        name: v.get('body.name')
       }
     });
     if (demo) {
@@ -44,7 +47,9 @@ class DemoDao {
       });
     }
     const bk = new Demo();
-    bk.title = v.get('body.name');
+    bk.name = v.get('body.name');
+    bk.phone = v.get('body.phone');
+    bk.sex = v.get('body.sex');
     await bk.save();
   }
 
@@ -57,6 +62,8 @@ class DemoDao {
       });
     }
     demo.name = v.get('body.name');
+    demo.phone = v.get('body.phone');
+    demo.sex = v.get('body.sex');
     await demo.save();
   }
 

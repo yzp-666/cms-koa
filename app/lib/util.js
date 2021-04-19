@@ -25,4 +25,11 @@ function isOptional (val) {
   return false;
 }
 
-export { getSafeParamId, isOptional };
+/* 正确返回 */
+function success (ctx, data) {
+  data.code = 200;
+  data.success = true
+  return ctx.json(data);
+}
+
+export { getSafeParamId, isOptional, success };
