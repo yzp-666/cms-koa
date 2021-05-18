@@ -81,6 +81,11 @@ class DemoDao {
     }
     demo.destroy();
   }
+
+  // deletes
+  // async deletes (ids) {
+  //
+  // }
 }
 
 export { DemoDao };

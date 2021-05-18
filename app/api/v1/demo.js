@@ -95,4 +95,19 @@ demoApi.linDelete(
   }
 );
 
+// demoApi.linDelete(
+//   'delete',
+//   '/',
+//   demoApi.permission('批量删除数据'),
+//   groupRequired,
+//   async ctx => {
+//     const v = await new PositiveIdValidator().validate(ctx);
+//     const ids = v.get('body.ids')
+//     await demoDto.deletes(ids);
+//     ctx.success({
+//       code: 14
+//     });
+//   }
+// );
+
 module.exports = { demoApi, [disableLoading]: false };
