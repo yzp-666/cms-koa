@@ -3,7 +3,7 @@ import { disableLoading, LinRouter, NotFound } from 'lin-mizar';
 import { DemoDao } from '../../dao/demo';
 import { PositiveIdValidator } from '../../validator/common'; // id验证
 import { SearchValidator, CreateOrUpdataValidator } from '../../validator/demo';
-import { getSafeParamId, success } from '../../lib/util';
+import { getSafeParamId, success, setKey } from '../../lib/util';
 import { groupRequired } from '../../middleware/jwt';
 
 const demoApi = new LinRouter({
@@ -39,7 +39,7 @@ demoApi.get('/:id', async ctx => {
 demoApi.linGet(
   'getList',
   '/',
-  demoApi.permission('查询所列表'),
+  demoApi.permission('查询demo列表'),
   groupRequired,
   async ctx => {
     // 校验查询的参数

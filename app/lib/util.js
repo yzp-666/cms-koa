@@ -25,7 +25,7 @@ function isOptional (val) {
   return false;
 }
 
-/* 正确返回 */
+// 正确返回
 function success (ctx, data) {
   data.code = 200;
   data.success = true

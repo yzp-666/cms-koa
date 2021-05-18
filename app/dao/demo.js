@@ -46,11 +46,11 @@ class DemoDao {
         code: 10240
       });
     }
-    const bk = new Demo();
-    bk.name = v.get('body.name');
-    bk.phone = v.get('body.phone');
-    bk.sex = v.get('body.sex');
-    await bk.save();
+    const demoData = new Demo();
+    demoData.name = v.get('body.name');
+    demoData.phone = v.get('body.phone');
+    demoData.sex = v.get('body.sex');
+    await demoData.save();
   }
 
   // 更新数据
