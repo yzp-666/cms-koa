@@ -68,24 +68,28 @@ class DemoDao {
   }
 
   // 删除数据
-  async delete (id) {
-    const demo = await Demo.findOne({
-      where: {
-        id
-      }
-    });
-    if (!demo) {
-      throw new NotFound({
-        code: 10022
+  async delete (id, ids) {
+    let demo;
+    let demoArr = [];
+    for (let i = 0; i < ids.length; i++) {
+      demo = await Demo.findOne({
+        where: {
+          id: ids[i]
+        }
       });
+      if (!demo) {
+        throw new NotFound({
+          code: 10022
+        });
+      }
+      demoArr.push(demo);
     }
-    demo.destroy();
-  }
 
-  // deletes
-  // async deletes (ids) {
-  //
-  // }
+    demoArr.map(item => {
+      item.destroy()
+      return null
+    })
+  }
 }
 
 export { DemoDao };

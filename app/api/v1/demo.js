@@ -3,7 +3,7 @@ import { disableLoading, LinRouter, NotFound } from 'lin-mizar';
 import { DemoDao } from '../../dao/demo';
 import { PositiveIdValidator } from '../../validator/common'; // id验证
 import { SearchValidator, CreateOrUpdataValidator } from '../../validator/demo';
-import { getSafeParamId, success, setKey } from '../../lib/util';
+import { getSafeParamId, success } from '../../lib/util';
 import { groupRequired } from '../../middleware/jwt';
 
 const demoApi = new LinRouter({
@@ -80,34 +80,40 @@ demoApi.put('/:id', async ctx => {
  *@param{ data }
  *@return {}
 */
-demoApi.linDelete(
-  'delete',
-  '/:id',
-  demoApi.permission('删除数据'),
-  groupRequired,
-  async ctx => {
-    const v = await new PositiveIdValidator().validate(ctx);
-    const id = v.get('path.id');
-    await demoDto.delete(id);
-    ctx.success({
-      code: 14
-    });
-  }
-);
-
 // demoApi.linDelete(
 //   'delete',
-//   '/',
-//   demoApi.permission('批量删除数据'),
+//   '/:id',
+//   demoApi.permission('删除数据'),
 //   groupRequired,
 //   async ctx => {
 //     const v = await new PositiveIdValidator().validate(ctx);
-//     const ids = v.get('body.ids')
-//     await demoDto.deletes(ids);
+//     const id = v.get('path.id');
+//     await demoDto.delete(id);
 //     ctx.success({
 //       code: 14
 //     });
 //   }
 // );
+
+/*
+ *@method Deletes
+ *@param{ ids }
+ *@return {}
+*/
+demoApi.linPost(
+  'delete',
+  '/delete',
+  demoApi.permission('删除数据'),
+  groupRequired,
+  async ctx => {
+    const v = await new PositiveIdValidator().validate(ctx);
+    const id = v.get('body.id');
+    const ids = v.get('body.ids');
+    await demoDto.delete(id, ids);
+    ctx.success({
+      code: 14
+    });
+  }
+);
 
 module.exports = { demoApi, [disableLoading]: false };

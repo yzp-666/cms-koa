@@ -3,7 +3,7 @@ import { LinValidator, Rule, config } from 'lin-mizar';
 class PositiveIdValidator extends LinValidator {
   constructor () {
     super();
-    this.id = new Rule('isInt', 'id必须为正整数', { min: 1 });
+    this.id = new Rule('isInt', 'id必须为正整数', { min: 0 });
   }
 }
 
