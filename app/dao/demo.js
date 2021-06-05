@@ -68,7 +68,7 @@ class DemoDao {
   }
 
   // 删除数据
-  async delete (id, ids) {
+  async delete (ids) {
     let demo;
     let demoArr = [];
     for (let i = 0; i < ids.length; i++) {
