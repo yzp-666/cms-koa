@@ -2,6 +2,8 @@ import { NotFound, Forbidden } from 'lin-mizar';
 import Sequelize from 'sequelize';
 import { Kehu } from '../model/kehu';
 
+const DataKey = [ 'name', 'phone', 'fax', 'email', 'type', 'site', 'yqkje', 'bz' ];
+
 class KehuDao {
   // 根据id获取单条数据
   async getId (id) {
@@ -47,14 +49,13 @@ class KehuDao {
       });
     }
     const demoData = new Kehu();
-    demoData.name = v.get('body.name');
-    demoData.phone = v.get('body.phone');
-    demoData.fax = v.get('body.fax');
-    demoData.email = v.get('body.email');
-    demoData.type = v.get('body.type');
-    demoData.site = v.get('body.site');
-    demoData.yqkje = v.get('body.yqkje');
-    demoData.bz = v.get('body.bz');
+    for (let item of DataKey) {
+      if (v.get(`body.${item}`)) {
+        demoData[item] = v.get(`body.${item}`)
+      } else {
+        demoData[item] = ' '
+      }
+    }
     await demoData.save();
   }
 
@@ -66,14 +67,13 @@ class KehuDao {
         code: 10022
       });
     }
-    demoData.name = v.get('body.name');
-    demoData.phone = v.get('body.phone');
-    demoData.fax = v.get('body.fax');
-    demoData.email = v.get('body.email');
-    demoData.type = v.get('body.type');
-    demoData.site = v.get('body.site');
-    demoData.yqkje = v.get('body.yqkje');
-    demoData.bz = v.get('body.bz');
+    for (let item of DataKey) {
+      if (v.get(`body.${item}`)) {
+        demo[item] = v.get(`body.${item}`)
+      } else {
+        demo[item] = ' '
+      }
+    }
     await demo.save();
   }
 

@@ -38,7 +38,7 @@ kehuApi.get('/:id', async ctx => {
  *@return {list} demoList
 */
 kehuApi.linGet(
-  'getList',
+  'kehuList',
   '/',
   kehuApi.permission('查询客户列表'),
   groupRequired,
@@ -55,7 +55,7 @@ kehuApi.linGet(
  *@return {}
 */
 kehuApi.linPost(
-  'DemoCreate',
+  'kehuCreate',
   '/',
   kehuApi.permission('新建客户'),
   logger('新建客户'),
@@ -75,7 +75,7 @@ kehuApi.linPost(
  *@return {}
 */
 kehuApi.linPut(
-  'DemoPut',
+  'KehuPut',
   '/:id',
   kehuApi.permission('编辑客户'),
   logger('编辑客户'),

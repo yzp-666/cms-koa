@@ -37,47 +37,52 @@ Kehu.init(
     },
     phone: {
       type: Sequelize.STRING(20),
-      allowNull: false
+      allowNull: true
     },
     fax: {
       type: Sequelize.STRING(20),
-      allowNull: false
+      allowNull: true
     },
     email: {
       type: Sequelize.STRING(20),
-      allowNull: false
+      allowNull: true
     },
     type: {
-      type: Sequelize.INTEGER,
-      allowNull: false
+      type: Sequelize.STRING(20),
+      allowNull: true
     },
     site: {
       type: Sequelize.STRING(200),
-      allowNull: false
+      allowNull: true
     },
     yqkje: {
       type: Sequelize.STRING(50),
-      allowNull: false
+      allowNull: true,
+      defaultValue: '0'
     },
     jyje: {
       type: Sequelize.STRING(50),
-      allowNull: false
+      allowNull: true,
+      defaultValue: '0'
     },
     ysje: {
       type: Sequelize.STRING(50),
-      allowNull: false
+      allowNull: true,
+      defaultValue: '0'
     },
     yfhje: {
       type: Sequelize.STRING(50),
-      allowNull: false
+      allowNull: true,
+      defaultValue: '0'
     },
     yfkje: {
       type: Sequelize.STRING(50),
-      allowNull: false
+      allowNull: true,
+      defaultValue: '0'
     },
     bz: {
       type: Sequelize.STRING(100),
-      allowNull: false
+      allowNull: true
     }
   },
   merge(
