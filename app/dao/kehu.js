@@ -1,8 +1,9 @@
 import { NotFound, Forbidden } from 'lin-mizar';
-import Sequelize from 'sequelize';
+import Sequelize, { where } from 'sequelize';
 import { Kehu } from '../model/kehu';
 
 const DataKey = [ 'name', 'phone', 'fax', 'email', 'type', 'site', 'yqkje', 'bz' ];
+const Op = Sequelize.Op
 
 class KehuDao {
   // 根据id获取单条数据
@@ -29,7 +30,25 @@ class KehuDao {
 
   // 获取列表
   async getList (data) {
+    let where = {}
+    if (data.name) {
+      where.name = { [Op.like]: `%${data.name}%` }
+    }
+    if (data.phone) {
+      where.phone = data.phone
+    }
+    if (data.type) {
+      where.type = data.type
+    }
     const demos = await Kehu.findAndCountAll({
+      where,
+      // where: {
+      //   name: {
+      //     [Op.like]: `%${data.name}%`
+      //   },
+      //   phone: data.phone,
+      //   type: data.type
+      // },
       limit: data.pageSize - 0,
       offset: (data.currentPage - 1) * (data.pageSize)
     });
@@ -45,7 +64,7 @@ class KehuDao {
     });
     if (demo) {
       throw new Forbidden({
-        code: 10240
+        code: 10241
       });
     }
     const demoData = new Kehu();
