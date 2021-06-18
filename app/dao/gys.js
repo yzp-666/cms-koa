@@ -1,14 +1,14 @@
 import { NotFound, Forbidden } from 'lin-mizar';
-import Sequelize, { where } from 'sequelize';
-import { Kehu } from '../model/kehu';
+import Sequelize from 'sequelize';
+import { Gys } from '../model/gys';
 
 const DataKey = [ 'name', 'phone', 'fax', 'email', 'type', 'site', 'yqkje', 'bz' ];
 const Op = Sequelize.Op
 
-class KehuDao {
+class GysDao {
   // 根据id获取单条数据
   async getId (id) {
-    const demo = await Kehu.findOne({
+    const demo = await Gys.findOne({
       where: {
         id
       }
@@ -18,7 +18,7 @@ class KehuDao {
 
   // 关键字搜索
   async getByKeyword (q) {
-    const demo = await Kehu.findOne({
+    const demo = await Gys.findOne({
       where: {
         name: {
           [Sequelize.Op.like]: `%${q}%`
@@ -40,7 +40,7 @@ class KehuDao {
     if (data.type) {
       where.type = data.type
     }
-    const demos = await Kehu.findAndCountAll({
+    const demos = await Gys.findAndCountAll({
       where,
       limit: data.pageSize - 0,
       offset: (data.currentPage - 1) * (data.pageSize)
@@ -50,7 +50,7 @@ class KehuDao {
 
   // 创建数据
   async create (v) {
-    const demo = await Kehu.findOne({
+    const demo = await Gys.findOne({
       where: {
         name: v.get('body.name')
       }
@@ -60,7 +60,7 @@ class KehuDao {
         code: 10241
       });
     }
-    const demoData = new Kehu();
+    const demoData = new Gys();
     for (let item of DataKey) {
       if (v.get(`body.${item}`)) {
         demoData[item] = v.get(`body.${item}`)
@@ -73,7 +73,7 @@ class KehuDao {
 
   // 更新数据
   async updata (v, id) {
-    const demo = await Kehu.findByPk(id);
+    const demo = await Gys.findByPk(id);
     if (!demo) {
       throw new NotFound({
         code: 10022
@@ -94,7 +94,7 @@ class KehuDao {
     let demo;
     let demoArr = [];
     for (let i = 0; i < ids.length; i++) {
-      demo = await Kehu.findOne({
+      demo = await Gys.findOne({
         where: {
           id: ids[i]
         }
@@ -114,4 +114,4 @@ class KehuDao {
   }
 }
 
-export { KehuDao };
+export { GysDao };
